@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>CSS Box Model and Animations</title>
+
+<style>
+
+.box-model {
+    width:200px;
+    height:150px;
+    padding:20px;
+    border:10px solid black;
+    margin:30px auto;
+    background:lightgray;
+    text-align:center;
+}
+
+.ball {
+    width:50px;
+    height:50px;
+    background:red;
+    border-radius:50%;
+    position:relative;
+    animation:bounceBall 2s infinite;
+}
+
+@keyframes bounceBall {
+    0%,50%,100% { top:0; transform:scaleY(1); }
+    25%,75%     { top:200px; transform:scaleY(0.7); }
+}
+
+.square-container {
+    position:relative;
+    height:150px;
+    width:500px;
+    margin:auto;
+}
+
+.blue-square {
+    width:100px;
+    height:100px;
+    background:blue;
+    position:absolute;
+    animation:moveSquare 3s infinite;
+}
+
+@keyframes moveSquare {
+    0%   { left:0; transform:rotate(0deg); }
+    50%  { left:300px; transform:rotate(180deg); }
+    100% { left:0; transform:rotate(360deg); }
+}
+
+.triangle {
+    width:0;
+    height:0;
+    border-left:50px solid transparent;
+    border-right:50px solid transparent;
+    border-bottom:100px solid black;
+    transform-origin:center;
+    animation:rotateTriangle 4s infinite linear;
+}
+
+@keyframes rotateTriangle {
+    to { transform:rotate(360deg); }
+}
+
+.svg-circle {
+    animation:moveCircle 3s infinite;
+}
+
+@keyframes moveCircle {
+    0%   { cx:50; }
+    50%  { cx:250; }
+    100% { cx:50; }
+}
+
+.multi-animation {
+    width:80px;
+    height:80px;
+    background:purple;
+    position:relative;
+    animation:moveRotateBounce 4s infinite, colorChange 3s infinite;
+}
+
+@keyframes moveRotateBounce {
+    0%   { left:0; top:0; transform:rotate(0deg); }
+    25%  { top:200px; }
+    50%  { left:200px; top:0; transform:rotate(180deg); }
+    75%  { top:200px; }
+    100% { left:0; top:0; transform:rotate(360deg); }
+}
+
+@keyframes colorChange {
+    0%   { background:purple; }
+    50%  { background:orange; }
+    100% { background:purple; }
+}
+
+</style>
+</head>
+
+<body>
+
+<center>
+<h1>CSS Box Model and Animations</h1>
+
+<h2>1. CSS Box Model</h2>
+<div class="box-model">
+    <p>Content Area</p>
+    <p>Width: 200px</p>
+    <p>Height: 150px</p>
+    <p>Padding: 20px</p>
+    <p>Border: 10px</p>
+    <p>Margin: 30px</p>
+</div>
+
+<h2>2. Bouncing Ball</h2>
+<div style="height:300px; position:relative;">
+    <div class="ball"></div>
+</div>
+
+<h2>3. Moving Square</h2>
+<div class="square-container">
+    <div class="blue-square"></div>
+</div>
+
+<h2>4. Rotating Triangle</h2>
+<div style="height:200px; display:flex; align-items:center; justify-content:center;">
+    <div class="triangle"></div>
+</div>
+
+<h2>5. SVG Circle Animation</h2>
+<svg width="400" height="100">
+    <circle class="svg-circle" cx="50" cy="50" r="30" stroke="black" stroke-width="2" fill="red"/>
+</svg>
+
+<h2>6. Multiple Animations</h2>
+<div style="height:250px; position:relative; width:400px; margin:auto;">
+    <div class="multi-animation"></div>
+</div>
+
+</center>
+
+</body>
+</html>
